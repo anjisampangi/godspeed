@@ -1,0 +1,2546 @@
+{
+    "item": [
+        {
+            "id": "73b00985-c246-4fd7-8c39-ff67651b861d",
+            "name": "Call another (sub) workflow from main workflow",
+            "request": {
+                "name": "Call another (sub) workflow from main workflow",
+                "description": {
+                    "content": "Here we are calling other yaml workflows from within the main workflow. We are also using JSON schema for request body and params validation",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "another_workflow"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [
+                        {
+                            "disabled": false,
+                            "key": "bank_id",
+                            "value": "<string>",
+                            "description": "(Required) ID of the bank"
+                        }
+                    ],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"customer_name\": \"<string>\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "fc0518f5-5bf3-4360-9c17-4167afaed5d0",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "another_workflow"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "bank_id",
+                                    "value": "okhdfc"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"customer_name\": \"Ayush\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "body": "{\n  \"application_id\": \"PRM20478956N\",\n  \"customer_name\": \"Ayush\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "3103bb96-2b75-461a-bc2a-a87b7043cad9",
+            "name": "Create a user and show all users across Mongo or Postgres.",
+            "request": {
+                "name": "Create a user and show all users across Mongo or Postgres.",
+                "description": {
+                    "content": "Create a user with posts and profile, as per the data model. Returns all users created so far. Demonstrate same API for both Mongo and Postgres.",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "create",
+                        ":entity_type"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "entity_type",
+                            "description": "(Required) The type of entity to create and find later"
+                        }
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"data\": {\n    \"data\": \"<object>\"\n  },\n  \"db\": \"<string>\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "a495de13-5f11-4b05-bb0c-0a1cb7c44385",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "create",
+                                ":entity_type"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "entity_type",
+                                    "description": "(Required) The type of entity to create and find later"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"db\": \"mongo\",\n  \"data\": {\n    \"data\": {\n      \"name\": \"Rajesh\",\n      \"email\": \"rfd@gmail.com\",\n      \"posts\": {\n        \"create\": {\n          \"title\": \"Second post!\",\n          \"slug\": \"dfourth_post\",\n          \"description\": \"some description\",\n          \"body\": \"Hello World!\"\n        }\n      },\n      \"profile\": {\n        \"create\": {\n          \"bio\": \"google.com\"\n        }\n      }\n    }\n  }\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "body": "[]",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "3439bc5a-de5c-4bb5-ac83-ebfd588deb5f",
+            "name": "upload document",
+            "request": {
+                "name": "upload document",
+                "description": {
+                    "content": "upload document on httpbin",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "document"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "fileName",
+                            "type": "file",
+                            "description": ""
+                        }
+                    ]
+                }
+            },
+            "response": [],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "c18044b9-dc36-434f-88d2-b002813c4b29",
+            "name": "hello world",
+            "request": {
+                "name": "hello world",
+                "description": {
+                    "content": "print hello world",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "helloworld"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [
+                        {
+                            "disabled": false,
+                            "key": "status",
+                            "value": "<string>"
+                        }
+                    ],
+                    "variable": []
+                },
+                "method": "GET",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "46830b43-a938-428f-80c4-310d6eb8dbe5",
+                    "name": "Returns the greeting.",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "helloworld"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "<string>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                },
+                {
+                    "id": "120b1eeb-5b31-493c-af2d-36af54195996",
+                    "name": "Invalid status value",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "helloworld"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "<string>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                    },
+                    "status": "Bad Request",
+                    "code": 400,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "93c829a0-c606-459d-a125-109514be33cf",
+            "name": "/anything_coffee",
+            "request": {
+                "name": "/anything_coffee",
+                "description": {},
+                "url": {
+                    "path": [
+                        "anything_coffee"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [
+                        {
+                            "disabled": false,
+                            "key": "bank_id",
+                            "value": "<string>",
+                            "description": "(Required) "
+                        }
+                    ],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"Gender\": \"<string>\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "85ea0d82-03d5-4ffe-adfb-8b400675ab84",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "anything_coffee"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "bank_id",
+                                    "value": "<string>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "body": "{\n  \"application_id\": \"PRM20478956N\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "143d585f-b4bc-4c7e-9cd8-b0dfbdae03e4",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "anything_coffee"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "bank_id",
+                                    "value": "<string>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Bad Request",
+                    "code": 400,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "body": "{\n  \"lender_response_code\": \"E001\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "c271f064-09ce-4da7-be7a-ffddaf5754e7",
+            "name": "/anything",
+            "request": {
+                "name": "/anything",
+                "description": {},
+                "url": {
+                    "path": [
+                        "anything"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [
+                        {
+                            "disabled": false,
+                            "key": "bank_id",
+                            "value": "<string>",
+                            "description": "(Required) "
+                        }
+                    ],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"Gender\": \"<string>\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "a4719374-514f-4ba9-baf0-4b499b2af282",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "anything"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "bank_id",
+                                    "value": "<string>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "body": "{\n  \"application_id\": \"PRM20478956N\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                },
+                {
+                    "id": "8a7c8c17-331f-4a60-a313-d60deadcc851",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "anything"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "bank_id",
+                                    "value": "<string>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Bad Request",
+                    "code": 400,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "body": "{\n  \"lender_response_code\": \"E001\"\n}",
+                    "cookie": [],
+                    "_postman_previewlanguage": "json"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "66debd4d-8e30-43ec-bbf3-29b2427eb2b3",
+            "name": "Fetch Category",
+            "request": {
+                "name": "Fetch Category",
+                "description": {
+                    "content": "Fetch Category from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "category",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "method": "GET",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "0df0752a-bf28-4698-b7e6-b7ea8660d854",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "category",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "body": {}
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "55a6ced5-b988-4f01-ac07-c31410912630",
+            "name": "Update a Category",
+            "request": {
+                "name": "Update a Category",
+                "description": {
+                    "content": "Update Category from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "category",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "PUT",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"value\": \"reference #/definitions/postgres/Category not found in the OpenAPI spec\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "c3a30c1f-0366-45ea-b41a-8b64c5e4afe0",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "category",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"value\": \"reference #/definitions/postgres/Category not found in the OpenAPI spec\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "e42dcf61-d478-433e-9712-efaf0ef78338",
+            "name": "Delete a Category",
+            "request": {
+                "name": "Delete a Category",
+                "description": {
+                    "content": "Delete Category from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "category",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "method": "DELETE",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "ec866a9b-6bb6-484f-ba8a-d523e24a1c74",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "category",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "40381407-0661-4c6c-bc7e-26c664d006fc",
+            "name": "Create a new Category",
+            "request": {
+                "name": "Create a new Category",
+                "description": {
+                    "content": "Create Category from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "category"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"value\": \"reference #/definitions/postgres/Category not found in the OpenAPI spec\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "b115d5ac-bb96-401a-8dcb-c9d8559f50a8",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "category"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"value\": \"reference #/definitions/postgres/Category not found in the OpenAPI spec\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "dfc098e7-04b0-40a5-967a-7893063e938d",
+            "name": "Fetch multiple Category",
+            "request": {
+                "name": "Fetch multiple Category",
+                "description": {
+                    "content": "Fetch multiple Category from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "category",
+                        "search"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "\"<object>\"",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "dace0d2e-a64e-40c2-89b7-e5589a2ead4f",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "category",
+                                "search"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "\"<object>\"",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "1bb177c2-aef9-489d-995e-66112822ca99",
+            "name": "Fetch Post",
+            "request": {
+                "name": "Fetch Post",
+                "description": {
+                    "content": "Fetch Post from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "post",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "method": "GET",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "ba9e90bb-3ad7-475e-96cb-4ecce10b1294",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "post",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "body": {}
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "7a7c61ca-25ba-4ade-bb1e-063289f5559a",
+            "name": "Update a Post",
+            "request": {
+                "name": "Update a Post",
+                "description": {
+                    "content": "Update Post from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "post",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "PUT",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"value\": \"reference #/definitions/postgres/Post not found in the OpenAPI spec\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "3b966ff3-7e00-4a82-adaa-45b3c94f6921",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "post",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"value\": \"reference #/definitions/postgres/Post not found in the OpenAPI spec\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "b5f4f750-bef7-4cb9-ae7f-bfc01f861e17",
+            "name": "Delete a Post",
+            "request": {
+                "name": "Delete a Post",
+                "description": {
+                    "content": "Delete Post from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "post",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "method": "DELETE",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "c3f637c5-7ec5-4b9d-b6cd-fba29a075e3c",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "post",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "e5eef72e-1460-45d1-a706-1e478ffc020f",
+            "name": "Create a new Post",
+            "request": {
+                "name": "Create a new Post",
+                "description": {
+                    "content": "Create Post from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "post"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"value\": \"reference #/definitions/postgres/Post not found in the OpenAPI spec\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "21e433d0-af49-4c17-90e4-ac66a5d57352",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "post"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"value\": \"reference #/definitions/postgres/Post not found in the OpenAPI spec\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "7d0bca48-8c9b-40e5-a981-7f0fdfbc9bdb",
+            "name": "Fetch multiple Post",
+            "request": {
+                "name": "Fetch multiple Post",
+                "description": {
+                    "content": "Fetch multiple Post from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "post",
+                        "search"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "\"<object>\"",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "192ae699-ed3f-4779-aae4-fe7404362f5d",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "post",
+                                "search"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "\"<object>\"",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "6161f631-a207-4a13-956a-63f1bc037cfe",
+            "name": "Fetch Profile",
+            "request": {
+                "name": "Fetch Profile",
+                "description": {
+                    "content": "Fetch Profile from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "profile",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "method": "GET",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "eb078084-c397-43a1-a764-de0031ed02c8",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "profile",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "body": {}
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "90b527b0-203e-442d-a9d9-f8c5b258e7c3",
+            "name": "Update a Profile",
+            "request": {
+                "name": "Update a Profile",
+                "description": {
+                    "content": "Update Profile from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "profile",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "PUT",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"value\": \"reference #/definitions/postgres/Profile not found in the OpenAPI spec\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "7a7e1850-7671-436a-a485-37b8de0c2f99",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "profile",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"value\": \"reference #/definitions/postgres/Profile not found in the OpenAPI spec\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "5915fa62-6581-4892-ad3c-77fb7e7dcbc6",
+            "name": "Delete a Profile",
+            "request": {
+                "name": "Delete a Profile",
+                "description": {
+                    "content": "Delete Profile from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "profile",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "method": "DELETE",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "1fc52986-7b28-405b-8a0c-36d742dc74af",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "profile",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "50dc3c53-ffdc-4b56-95dd-a615984cefec",
+            "name": "Create a new Profile",
+            "request": {
+                "name": "Create a new Profile",
+                "description": {
+                    "content": "Create Profile from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "profile"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"value\": \"reference #/definitions/postgres/Profile not found in the OpenAPI spec\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "22d70fe1-8e7d-4856-a907-08bd7bf25da8",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "profile"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"value\": \"reference #/definitions/postgres/Profile not found in the OpenAPI spec\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "5763b4d5-19c3-44b6-8af5-3020df5f5fbe",
+            "name": "Fetch multiple Profile",
+            "request": {
+                "name": "Fetch multiple Profile",
+                "description": {
+                    "content": "Fetch multiple Profile from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "profile",
+                        "search"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "\"<object>\"",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "6c1c7cf7-0dc7-4769-bb52-fbb87bfcd837",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "profile",
+                                "search"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "\"<object>\"",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "41f5fd04-3cb4-4530-9d44-ad0b617a055f",
+            "name": "Fetch User",
+            "request": {
+                "name": "Fetch User",
+                "description": {
+                    "content": "Fetch User from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "user",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "method": "GET",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "ff455f4a-5bbf-4a43-9661-10c383b9cdc9",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "user",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "body": {}
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "942543c0-f818-41e6-9d36-f0e5aa094fd8",
+            "name": "Update a User",
+            "request": {
+                "name": "Update a User",
+                "description": {
+                    "content": "Update User from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "user",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "PUT",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"value\": \"reference #/definitions/postgres/User not found in the OpenAPI spec\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "824a74e0-0970-4ce6-aebf-c7c81f508e53",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "user",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"value\": \"reference #/definitions/postgres/User not found in the OpenAPI spec\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "3d0cba11-a624-44ee-bda6-c0d90ef6b9ad",
+            "name": "Delete a User",
+            "request": {
+                "name": "Delete a User",
+                "description": {
+                    "content": "Delete User from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "user",
+                        ":id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "id",
+                            "description": "(Required) "
+                        }
+                    ]
+                },
+                "method": "DELETE",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "5724cebb-65ad-4ba8-bb9b-252163babe58",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "user",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "id",
+                                    "description": "(Required) "
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "9cf81541-21a4-4fb0-84c0-bfafb37d831d",
+            "name": "Create a new User",
+            "request": {
+                "name": "Create a new User",
+                "description": {
+                    "content": "Create User from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "user"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"value\": \"reference #/definitions/postgres/User not found in the OpenAPI spec\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "e967c2bc-82a1-49db-9039-23dc1e52e54d",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "user"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"value\": \"reference #/definitions/postgres/User not found in the OpenAPI spec\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "65f1434b-b827-4cde-9f89-be90cf687e79",
+            "name": "Fetch multiple User",
+            "request": {
+                "name": "Fetch multiple User",
+                "description": {
+                    "content": "Fetch multiple User from database",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "postgres",
+                        "user",
+                        "search"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "\"<object>\"",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "b9e7dd0e-82eb-4809-84cf-cda47ae5648d",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "postgres",
+                                "user",
+                                "search"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "\"<object>\"",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        },
+        {
+            "id": "67dc01f7-61c7-430e-8205-e2b524664346",
+            "name": "Running tasks in parallel",
+            "request": {
+                "name": "Running tasks in parallel",
+                "description": {
+                    "content": "Run any three tasks in parallel. Each task can invoke a function or another workflow. \nHere we are simply returning a string in each task. \nIn response, we are returning a JSON with output from 1st task\n",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "run_parallel_tasks"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "text/plain"
+                    }
+                ],
+                "method": "POST",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "ae86b685-1f5e-47ff-a103-93bd12931ab4",
+                    "name": "OK",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "run_parallel_tasks"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "method": "POST",
+                        "body": {}
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "parallel task1",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "126e8a45-8313-4e06-854a-7b2b06a3e380",
+            "name": "A workflow involving developer written JS function",
+            "request": {
+                "name": "A workflow involving developer written JS function",
+                "description": {
+                    "content": "This workflow invokes a developer defined function at path com.biz.sum",
+                    "type": "text/plain"
+                },
+                "url": {
+                    "path": [
+                        "sum"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [
+                        {
+                            "disabled": false,
+                            "key": "status",
+                            "value": "<integer>"
+                        }
+                    ],
+                    "variable": []
+                },
+                "method": "GET",
+                "auth": null
+            },
+            "response": [
+                {
+                    "id": "8fac5c49-da35-4567-a353-4e9362150cd3",
+                    "name": "Returns the sum of two numbers.",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "sum"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "<integer>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                },
+                {
+                    "id": "4921c357-bc01-43e9-b209-3a4ef273dfc1",
+                    "name": "Invalid status value",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "sum"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "<integer>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                    },
+                    "status": "Bad Request",
+                    "code": 400,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": []
+        },
+        {
+            "id": "1c74a628-d9a5-42a8-a695-3e4aff088c79",
+            "name": "/switch_test/:bank_id",
+            "request": {
+                "name": "/switch_test/:bank_id",
+                "description": {},
+                "url": {
+                    "path": [
+                        "switch_test",
+                        ":bank_id"
+                    ],
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": [
+                        {
+                            "disabled": false,
+                            "type": "any",
+                            "value": "<string>",
+                            "key": "bank_id"
+                        }
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "text/plain"
+                    }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"condition\": \"<string>\",\n  \"Gender\": \"<string>\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "id": "287b3268-c16b-41c3-b1a6-26e6b5a41f41",
+                    "name": "OK",
+                    "originalRequest": {
+                        "url": {
+                            "path": [
+                                "switch_test",
+                                ":bank_id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "disabled": false,
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "bank_id"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"Gender\": \"Male\",\n  \"condition\": \"1st\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "body": "case - default",
+                    "cookie": [],
+                    "_postman_previewlanguage": "text"
+                }
+            ],
+            "event": [],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            }
+        }
+    ],
+    "event": [],
+    "variable": [
+        {
+            "type": "string",
+            "value": "http://localhost:3005",
+            "key": "baseUrl"
+        }
+    ],
+    "info": {
+        "_postman_id": "bc4fc263-e393-486d-a7f7-aa6eed2d220d",
+        "name": "Godspeed: Sample Microservice",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "Sample API calls demonstrating the functionality of Godspeed framework\n\nContact Support:\n Name: Mindgrep Technologies Pvt Ltd\n Email: talktous@mindgrep.com",
+            "type": "text/plain"
+        }
+    }
+}
